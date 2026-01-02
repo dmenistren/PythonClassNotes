@@ -7,13 +7,14 @@ def test():
     print("This is the main file.")
 
 
-def add(a,b):
+def add(a, b):
     """
     a: int (first number)
     b: int (second number)
     return: int (sum of a and b)
     """
     return a + b
+
 
 def name(value="Guest"):
     """
@@ -26,5 +27,6 @@ def name(value="Guest"):
 name()
 name("Alice")
 
-a = "hello"
+a = "helo"
+# woek
 print(a[::-1])
