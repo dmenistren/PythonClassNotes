@@ -1,29 +1,22 @@
-def is_pali():
+def is_pali(value: str) -> None:
     """
-    Checks if a word is a Palindrome or not
-    Args:
-        word (string): The word that the user entered in the program
-    Returns:
-        returns If a word is a Palindrome or not
+    Get the input and check the value is palindrome or not
+    args:
+        1. value: word to check the value is palindrome
     """
-    #while loop for Palindrome logic
-    while True:
-        word = input("This is a Palindrome Checker! Please enter your word.").lower().replace(" ", "")
-        old_word = word
-        new_word = word[::-1]
-        if old_word == new_word:
-            print("This is a palindrum!")
-        else: 
-            print("This isn't a palindrum!")
-        # run again logic
-        while True:
-            run_again=input("Do you want to continue?y/n")
-            if run_again.lower() == "y":
-                break
-            elif run_again.lower() == "n":
-                print("Process is finishing")
-                return
-            print("Please enter only y or n!")
+    old_word = value
+    new_word = value[::-1]
+    if old_word == new_word:
+        print("This is a palindrum!")
+    else:
+        print("This isn't a palindrum!")
 
 
-is_pali()
+while True:
+    input_value = input(
+        "This is a Palindrome Checker! Please enter your word.").lower().replace(" ", "")
+    is_pali(input_value)
+    run_again = input("Do you want to continue?y/n")
+    if run_again.lower() == "n":
+        print("Process is finishing")
+        break
