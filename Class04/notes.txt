@@ -1,0 +1,7 @@
+SQL Commands : https://www.geeksforgeeks.org/sql/sql-ddl-dql-dml-dcl-tcl-commands/
+
+
+install virtual Environment:
+-----------------------------
+=>  pip install virtualenv
+
