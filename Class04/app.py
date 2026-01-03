@@ -1,5 +1,15 @@
 import psycopg2
 
+"""
+To do:
+-------
+1. get connection DB  -completed
+2. get all the value -completed
+3. I need to update the value -completed
+4. need to inset the value -completed
+5. need to delete value -completed
+"""
+
 
 def db_conn():
     '''
