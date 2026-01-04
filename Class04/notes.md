@@ -1,19 +1,19 @@
 ### Create the virutal environment:
 
-```jsx
+```python
 python -m venv env
 env/Scripts/activate
 ```
 
 ### Install python package
 
-```jsx
+```python
 pip install psycopg2
 ```
 
 ### Create a Table in PSQL
 
-```jsx
+```python
 CREATE TABLE public.person (
 	id int4 NULL,
 	first_name varchar(50) NULL,
@@ -25,7 +25,7 @@ CREATE TABLE public.person (
 
 ### Connect the python with PSQL
 
-```jsx
+```python
 import psycopg2
 
 def get_db_connection():
@@ -41,7 +41,7 @@ def get_db_connection():
 
 ### Insert the Data in PSQL using the python
 
-```jsx
+```python
 def insert_data_db(connection: psycopg2.extensions.connection, cursor: psycopg2.extensions.cursor, id: int, fname: str, lname: str, email: str, gender: str):
     query = """INSERT INTO public.person
                     (id, first_name, last_name, email, gender)
@@ -53,7 +53,7 @@ def insert_data_db(connection: psycopg2.extensions.connection, cursor: psycopg2.
 
 ### update the data in PSQL using the python
 
-```jsx
+```python
 def update_data_db(connection: psycopg2.extensions.connection, cursor: psycopg2.extensions.cursor, id: int, changed_email: str):
     query = "update person set email = %s where id = %s"
     cursor.execute(query, (changed_email, id))
@@ -62,7 +62,7 @@ def update_data_db(connection: psycopg2.extensions.connection, cursor: psycopg2.
 
 ### Delete the data in PSQL using the Python
 
-```jsx
+```python
 def delete_data_db(con, cur, id):
     query = 'delete from person where id = %s'
     cur.execute(query, (id,))
@@ -72,7 +72,7 @@ def delete_data_db(con, cur, id):
 
 ### Select the data from the PSQL using the python
 
-```jsx
+```python
 def select_data_db(cur):
     query = 'select * from person p'
     cur.execute(query)
