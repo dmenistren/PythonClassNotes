@@ -1,4 +1,4 @@
-def dirReduc(arr):
+def dirReduc(arr: list) -> list:
     # Dictionary to define what cancels what
     opposites = {
         "NORTH": "SOUTH", 
