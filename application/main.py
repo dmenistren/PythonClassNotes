@@ -1,12 +1,14 @@
 from db import BaseClass, Session, Engine
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify
 import model
-from password_hash import generate_secret
-
+from auth.signup import signup_app
+from auth.login import login_blueprint
 
 def create_app() -> Flask:
     app = Flask(__name__)
     BaseClass.metadata.create_all(Engine)
+    app.register_blueprint(signup_app)
+    app.register_blueprint(login_blueprint)
     return app
 
 
@@ -20,25 +22,5 @@ def health_check():
     })
 
 
-# Signup
-@app.route("/signup", methods=['POST'])
-def signup():
-    req_data = request.json
-    db = Session()
-    user = model.User()
-
-    user.full_name = req_data.get("full_name")
-    user.email = req_data.get("email")
-    user.password = generate_secret(req_data.get("password"))
-    user.Age = int(req_data.get('age', 0))
-
-    db.add(user)
-    db.commit()
-
-    return jsonify({
-        "success": "Sign up completed"
-    })
-
-
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
