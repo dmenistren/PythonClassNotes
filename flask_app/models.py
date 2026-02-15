@@ -2,7 +2,7 @@
 Handles Structure of the data
 """
 
-from flask_app.database import db
+from database import db
 
 class User(db.Model):
     __tablename__ = 'usr'

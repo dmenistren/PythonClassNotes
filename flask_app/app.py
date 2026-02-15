@@ -8,13 +8,13 @@ import bcrypt
 from jose import jwt
 
 # Local imports
-from flask_app.database import db
-from flask_app.models import User
+from database import db
+from models import User
 
 app = Flask(__name__)
 
 # --- Configuration ---
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:hello123@localhost/auth'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:toor@localhost/pythonclass'
 app.config['SECRET_KEY'] = 'your_super_secret_key'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -29,7 +29,6 @@ def create_access_token(user_id):
     return jwt.encode(payload, app.config['SECRET_KEY'], algorithm='HS256')
 
 # --- Routes ---
-
 @app.route('/signup', methods=['POST'])
 def signup():
     data = request.get_json()
@@ -54,6 +53,7 @@ def signup():
     db.session.commit()
     return jsonify({"message": "Account created"}), 201
 
+
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -68,6 +68,7 @@ def login():
         }), 200
     
     return jsonify({"error": "Invalid credentials"}), 401
+
 
 @app.route('/change-password', methods=['POST'])
 def change_password():
@@ -89,7 +90,10 @@ def change_password():
     
     return jsonify({"message": "Password updated successfully"}), 200
 
-if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()  # Create tables
-    app.run(debug=True)
+
+with app.app_context():
+    db.create_all()
+
+# if __name__ == "__main__":
+#    # Create tables
+#     app.run(debug=True)
